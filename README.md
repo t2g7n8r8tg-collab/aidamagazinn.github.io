@@ -1,0 +1,2 @@
+# aidamagazinn.github.io
+Magazin
