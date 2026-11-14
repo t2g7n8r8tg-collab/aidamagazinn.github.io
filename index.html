@@ -1,0 +1,102 @@
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#24583f">
+<meta name="theme-color" content="#ea580c">
+<title>АИДА — продукты с доставкой</title>
+<style>
+:root{--green:#24583f;--green2:#eaf2eb;--ink:#1d2b22;--muted:#718078;--line:#e7ece8;--bg:#f7f9f7}
+:root{--primary:#ea580c;--primary-hover:#c2410c;--accent:#f97316;--primary-soft:#fff1e7;--ink:#2a1d15;--muted:#7d7069;--line:#efe7e2;--bg:#fbf8f6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,textarea{font:inherit}button{cursor:pointer;border:0}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.wrap{max-width:1080px;margin:auto;padding:0 18px}
+.top{height:68px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-size:26px;font-weight:850;letter-spacing:1px;color:var(--green)}
+.brand{font-size:26px;font-weight:850;letter-spacing:1px;color:var(--primary)}
+.sub{font-size:11px;color:var(--muted);letter-spacing:1.2px}
+.actions{display:flex;gap:8px;align-items:center}
+.pill,.cartbtn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;color:var(--ink)}
+.cartbtn{background:var(--green);color:white;border-color:var(--green);font-weight:700}
+.hero{margin:22px 0 18px;background:linear-gradient(115deg,#e8f1e9,#f5f4e9);border-radius:22px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:18px;overflow:hidden}
+.cartbtn{background:var(--primary);color:white;border-color:var(--primary);font-weight:700}
+.hero{margin:22px 0 18px;background:linear-gradient(115deg,#ffedd5,#fff7ed);border-radius:22px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:18px;overflow:hidden}
+.hero h1{font-size:clamp(27px,5vw,44px);line-height:1.08;margin:0 0 10px;max-width:540px}
+.hero p{color:#53665a;margin:0 0 18px;max-width:440px}
+.primary{background:var(--green);color:#fff;padding:12px 18px;border-radius:12px;font-weight:700;width:100%;text-align:center}
+.hero p{color:#6b5446;margin:0 0 18px;max-width:440px}
+.primary{background:var(--primary);color:#fff;padding:12px 18px;border-radius:12px;font-weight:700;width:100%;text-align:center}
+.heroMark{font-size:100px;opacity:.16}
+.notice{font-size:13px;color:var(--muted);margin:12px 0 22px}
+h2{font-size:21px;margin:25px 0 13px}
+.searchrow{display:flex;gap:10px;align-items:center}
+.search{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:#fff;outline-color:var(--green)}
+.cats{display:flex;gap:8px;overflow:auto;padding:2px 0 8px}
+.cat{white-space:nowrap;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 14px}
+.cat.active{background:var(--green2);border-color:#c7d9cb;color:var(--green);font-weight:700}
+.search{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:#fff;outline-color:var(--primary)}
+.cats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px 12px;padding:2px 0 8px}
+.cat{background:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--ink);text-align:center;min-width:0}
+.cat .tile{width:100%;aspect-ratio:1;border-radius:14px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:clamp(38px,9vw,58px);box-shadow:0 1px 3px #2a1d150d;transition:transform .15s,box-shadow .15s,border-color .15s}
+.cat .tile.promo{background:#e30613;border-color:#e30613;color:#fff;font-weight:900}
+.cat .tile.promo span{width:58%;aspect-ratio:1;border-radius:50%;background:#fff;color:#e30613;display:grid;place-items:center;font-size:.6em}
+.cat .tile.all{background:linear-gradient(135deg,var(--accent),var(--primary));border-color:var(--primary)}
+.cat .label{font-size:13px;font-weight:650;line-height:1.2;overflow-wrap:anywhere}
+.cat:hover .tile{transform:translateY(-2px);box-shadow:0 6px 14px #2a1d1518}
+.cat.active .tile{border:2px solid var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
+.cat.active .label{color:var(--primary);font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.product{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;display:flex;flex-direction:column;min-width:0}
+.emoji{height:112px;border-radius:12px;background:#f3f6f2;display:grid;place-items:center;font-size:55px;margin-bottom:11px}
+.emoji{height:112px;border-radius:12px;background:#fff5ee;display:grid;place-items:center;font-size:55px;margin-bottom:11px}
+.pname{font-weight:700;min-height:42px}
+.meta{font-size:12px;color:var(--muted);margin:4px 0 10px}
+.pbottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
+.price{font-weight:800;display:flex;flex-direction:column;line-height:1.15}.price.sale{color:#c0392b}.old{font-size:12px;font-weight:500;color:var(--muted)}
+.emoji{position:relative}.badge{position:absolute;top:8px;left:8px;background:#c0392b;color:#fff;font-size:12px;font-weight:800;border-radius:8px;padding:3px 7px}
+.add{background:var(--green2);color:var(--green);font-weight:800;border-radius:10px;padding:9px 12px}
+.add{background:var(--primary-soft);color:var(--primary);font-weight:800;border-radius:10px;padding:9px 12px}
+.empty{padding:28px;text-align:center;color:var(--muted);background:white;border:1px dashed var(--line);border-radius:14px}
+footer{padding:35px 0;color:var(--muted);font-size:12px}
+.overlay{position:fixed;inset:0;background:#14231b66;z-index:10;display:none}
+.overlay{position:fixed;inset:0;background:#2a1d1566;z-index:10;display:none}
+.drawer{position:absolute;right:0;top:0;height:100%;width:min(460px,100%);background:#fff;padding:20px;overflow:auto}
+.drawerhead{display:flex;justify-content:space-between;align-items:center}
+.close{background:#f1f4f1;border-radius:10px;padding:8px 12px}
+.close{background:#f6f0ec;border-radius:10px;padding:8px 12px}
+.cartline{display:grid;grid-template-columns:1fr auto auto;gap:9px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+.qty{display:flex;align-items:center;gap:8px}.qty button{background:#f0f4f0;border-radius:8px;padding:5px 9px}
+.qty{display:flex;align-items:center;gap:8px}.qty button{background:#f6f0ec;border-radius:8px;padding:5px 9px}
+.summary{margin-top:18px;border-top:1px solid var(--line);padding-top:15px}
+.sumrow{display:flex;justify-content:space-between;margin:8px 0}
+.total{font-size:20px;font-weight:850}
+form input,form textarea{padding:12px;border:1px solid var(--line);border-radius:10px;width:100%}
+form textarea{min-height:75px;resize:vertical}
+.small{font-size:12px;color:var(--muted)}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#203d2c;color:white;padding:11px 16px;border-radius:12px;display:none;z-index:20}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:22px}.heroMark{font-size:65px}.product{padding:10px}.emoji{height:95px}.top{height:62px}}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#7c2d12;color:white;padding:11px 16px;border-radius:12px;display:none;z-index:20}
+.cartbtn:hover,.primary:hover{background:var(--primary-hover);border-color:var(--primary-hover)}
+.add:hover{background:var(--accent);color:#fff}
+.search:focus{border-color:var(--accent)}
+@media(max-width:760px){.cats{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 9px}.cat .label{font-size:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:22px}.heroMark{font-size:65px}.product{padding:10px}.emoji{height:95px}.top{height:62px}}
+@media(min-width:761px){.wrap{padding:0 24px}}
+</style>
+</head>
+];
+// Категории строятся автоматически из списка товаров
+const ALL = "Все", PROMO = "🔥 Акции";
+// Иконки категорий (если категории нет в списке — берётся эмодзи первого товара)
+const CAT_ICONS = { "Молочные продукты": "🧀", "Фрукты": "🍎", "Овощи": "🥗", "Мясо": "🥩", "Выпечка": "🥐", "Напитки": "🥤", "Бакалея": "🍝", "Сладости": "🍫", "Бытовая химия": "🧴" };
+const catIcon = c => CAT_ICONS[c] || (products.find(p => p.cat === c) || {}).emoji || "🛒";
+const cats = [ALL, ...(products.some(p => p.promo) ? [PROMO] : []), ...new Set(products.map(p => p.cat))];
+const tr={
+ru:{tag:'ПРОДУКТЫ • ДОСТАВКА • АБАЙ',hero:'Продукты с доставкой до двери',desc:'Всё необходимое для дома — в одном месте. Заказывайте онлайн, а мы доставим в WhatsApp.',shop:'Перейти к покупкам',rules:'Минимальный заказ — 3 000 ₸ · Доставка — 500 ₸ · Бесплатно от 10 000 ₸ · Обычно 30–60 минут',categories:'Категории',popular:'Товары',cart:'Корзина',deliveryTitle:'Данные для доставки',place:'Заказать через WhatsApp',paymentNote:'После нажатия откроется WhatsApp с готовым текстом вашего заказа.',foot:'Заказы отправляются напрямую в WhatsApp магазина.',search:'Найти товар...',empty:'В корзине пока пусто',subtotal:'Товары',delivery:'Доставка',free:'Бесплатно',total:'Итого',min:'Минимальная сумма заказа — 3 000 ₸.',added:'Добавлено в корзину',noresults:'Товары не найдены',need:'Добавьте товары на сумму не менее 3 000 ₸.',promo:'Акция'},
+};
+let lang='ru',active=ALL,cart={};
+const money=n=>n.toLocaleString('ru-RU')+' ₸',t=k=>tr[lang][k];
+function renderCats(){document.querySelector('#cats').innerHTML=cats.map(c=>`<button class="cat ${active===c?'active':''}" data-cat="${c}">${c}</button>`).join('');document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{active=b.dataset.cat;renderCats();renderProducts()})}
+function renderCats(){document.querySelector('#cats').innerHTML=cats.map(c=>`<button class="cat ${active===c?'active':''}" data-cat="${c}">${c===PROMO?'<span class="tile promo"><span>%</span></span>':c===ALL?'<span class="tile all">🛍️</span>':`<span class="tile">${catIcon(c)}</span>`}<span class="label">${c===PROMO?'Акции':c}</span></button>`).join('');document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{active=b.dataset.cat;renderCats();renderProducts()})}
+function renderProducts(){let q=document.querySelector('#search').value.toLowerCase();let list=products.filter(p=>(active===ALL||(active===PROMO?p.promo:p.cat===active))&&(p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)));document.querySelector('#products').innerHTML=list.length?list.map(p=>`<article class="product"><div class="emoji">${p.promo?`<span class="badge">${p.oldPrice?'−'+Math.round((1-p.price/p.oldPrice)*100)+'%':t('promo')}</span>`:''}${p.emoji}</div><div class="pname">${p.name}</div><div class="meta">${p.unit} · ${p.cat}</div><div class="pbottom"><span class="price${p.oldPrice?' sale':''}">${money(p.price)}${p.oldPrice?`<s class="old">${money(p.oldPrice)}</s>`:''}</span><button class="add" data-add="${p.id}">+</button></div></article>`).join(''):`<div class="empty">${t('noresults')}</div>`;document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>add(+b.dataset.add))}
+function add(id){cart[id]=(cart[id]||0)+1;renderCart();toast(t('added'))}
+function change(id,d){cart[id]+=d;if(cart[id]<=0)delete cart[id];renderCart()}
